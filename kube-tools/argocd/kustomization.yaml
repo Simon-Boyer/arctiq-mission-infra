@@ -4,7 +4,17 @@ kind: Kustomization
 namespace: argocd
 
 resources:
+  - https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
   - project.yaml
   - applications.yaml
-  - argo-options.yaml
-  #- ingress.yaml
+
+patches:
+- patch: |-
+      - op: add
+        path: /data
+        value:
+          kustomize.buildOptions: --load-restrictor LoadRestrictionsNone --enable-helm
+          server.insecure: "true"
+  target:
+    kind: ConfigMap
+    name: argocd-cm
