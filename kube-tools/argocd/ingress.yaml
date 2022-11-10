@@ -7,13 +7,13 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: Host(`argocd.codegameeat.com`)
+      match: Host(`argocd.34.152.59.49.nip.io`)
       priority: 10
       services:
         - name: argocd-server
           port: 80
     - kind: Rule
-      match: Host(`argocd.codegameeat.com`) && Headers(`Content-Type`, `application/grpc`)
+      match: Host(`argocd.34.152.59.49.nip.io`) && Headers(`Content-Type`, `application/grpc`)
       priority: 11
       services:
         - name: argocd-server
