@@ -35,7 +35,7 @@ helmCharts:
           enabled: true
           certResolver: le
           domains:
-            - main: 34.152.59.49.nip.io
+            - main: arctiq.codegameeat.com
     certResolvers:
       le:
         email: traefik.uj4zj@simplelogin.co
