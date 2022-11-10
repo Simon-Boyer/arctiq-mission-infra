@@ -1,0 +1,45 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: traefik
+
+helmCharts:
+- name: traefik
+  includeCRDs: true
+  namespace: traefik
+  releaseName: traefik
+  version: 19.0.4
+  repo: https://helm.traefik.io/traefik
+  valuesInline:
+    deployment:
+      enabled: true
+    providers:
+          kubernetesCRD:
+            enabled: true
+          kubernetesIngress:
+            enabled: true
+    ports:
+      web:
+       port: 80
+       expose: true
+       exposedPort: 80
+       protocol: TCP
+      websecure:
+        port: 443
+        expose: true
+        exposedPort: 443
+        protocol: TCP
+        tls:
+          enabled: true
+          certResolver: "le"
+          domains:
+            - main: codegameeat.com
+    certificatesResolvers:
+      le:
+        acme:
+          email: traefik.uj4zj@simplelogin.co
+          storage: /data/acme.json
+          httpChallenge:
+            entryPoint: web
+    service:
+          enabled: true
+          type: LoadBalancer
