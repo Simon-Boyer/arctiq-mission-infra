@@ -40,8 +40,14 @@ helmCharts:
       le:
         email: traefik.uj4zj@simplelogin.co
         storage: /data/acme.json
-        httpChallenge:
-          entryPoint: web
+        dnsChallenge:
+          provider: cloudflare
+    env:
+      - name: CLOUDFLARE_DNS_API_TOKEN
+        valueFrom:
+          secretKeyRef:
+            name: cloudflare-api
+            key: apikey
     service:
           enabled: true
           type: LoadBalancer
