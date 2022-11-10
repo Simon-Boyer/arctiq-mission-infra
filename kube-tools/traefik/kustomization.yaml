@@ -38,11 +38,10 @@ helmCharts:
             - main: 34.152.59.49.nip.io
     certResolvers:
       le:
-        acme:
-          email: traefik.uj4zj@simplelogin.co
-          storage: /data/acme.json
-          httpChallenge:
-            entryPoint: web
+        email: traefik.uj4zj@simplelogin.co
+        storage: /data/acme.json
+        httpChallenge:
+          entryPoint: web
     service:
           enabled: true
           type: LoadBalancer
