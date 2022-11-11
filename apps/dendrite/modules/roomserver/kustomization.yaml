@@ -7,6 +7,9 @@ namePrefix: roomserver-
 bases:
   - ../../base
 
+commonLabels:
+  app: roomserver-dendrite
+
 patches:
 - patch: |-
       - op: add

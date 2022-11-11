@@ -7,6 +7,9 @@ namePrefix: sync-
 bases:
   - ../../base
 
+commonLabels:
+  app: sync-dendrite
+
 resources:
   - ingress.yaml
 

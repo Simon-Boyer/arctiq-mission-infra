@@ -7,6 +7,9 @@ namePrefix: user-
 bases:
   - ../../base
 
+commonLabels:
+  app: user-dendrite
+
 resources:
   - ingress.yaml
 
