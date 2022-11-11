@@ -46,7 +46,7 @@ spec:
     server: https://kubernetes.default.svc
   source:
     repoURL: 'https://github.com/Simon-Boyer/arctiq-mission-infra'
-    path: kube-tools/crossplane/gcp-pkg-config.yaml
+    path: kube-tools/crossplane/pkg-configs
   syncPolicy:
     automated:
       selfHeal: true
@@ -64,7 +64,7 @@ spec:
     server: https://kubernetes.default.svc
   source:
     repoURL: 'https://github.com/Simon-Boyer/arctiq-mission-infra'
-    path: kube-tools/crossplane/providers.yaml
+    path: kube-tools/crossplane/providers
   syncPolicy:
     automated:
       selfHeal: true
