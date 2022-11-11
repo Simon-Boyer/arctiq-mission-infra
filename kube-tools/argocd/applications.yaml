@@ -17,7 +17,28 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: crossplane
+  name: crossplane-helm
+spec:
+  project: default
+  destination:
+    namespace: crossplane-system
+    server: https://kubernetes.default.svc
+  source:
+    chart: crossplane
+    repoURL: https://charts.crossplane.io/stable
+    targetRevision: 1.10.1
+    helm:
+      releaseName: crossplane
+  syncPolicy:
+    automated:
+      selfHeal: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+annotations:
+    argocd.argoproj.io/sync-wave: "1"
+metadata:
+  name: crossplane-defs
 spec:
   project: default
   destination:
