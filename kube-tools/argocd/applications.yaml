@@ -1,22 +1,6 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: argocd
-spec:
-  project: default
-  destination:
-    namespace: argocd
-    server: https://kubernetes.default.svc
-  source:
-    repoURL: 'https://github.com/Simon-Boyer/arctiq-mission-infra'
-    path: kube-tools/argocd
-  syncPolicy:
-    automated:
-      selfHeal: true
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
   name: traefik-mesh
 spec:
   project: default
@@ -26,22 +10,6 @@ spec:
   source:
     repoURL: 'https://github.com/Simon-Boyer/arctiq-mission-infra'
     path: kube-tools/traefik-mesh
-  syncPolicy:
-    automated:
-      selfHeal: true
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: traefik
-spec:
-  project: default
-  destination:
-    namespace: traefik
-    server: https://kubernetes.default.svc
-  source:
-    repoURL: 'https://github.com/Simon-Boyer/arctiq-mission-infra'
-    path: kube-tools/traefik
   syncPolicy:
     automated:
       selfHeal: true
