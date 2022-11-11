@@ -1,0 +1,127 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: dendrite-appservice
+spec:
+  project: default
+  destination:
+    namespace: dendrite
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: 'https://github.com/Simon-Boyer/arctiq-mission-infra'
+    path: apps/dendrite/modules/appservice
+  syncPolicy:
+    automated:
+      selfHeal: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: dendrite-client
+spec:
+  project: default
+  destination:
+    namespace: dendrite
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: 'https://github.com/Simon-Boyer/arctiq-mission-infra'
+    path: apps/dendrite/modules/client
+  syncPolicy:
+    automated:
+      selfHeal: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: dendrite-federation
+spec:
+  project: default
+  destination:
+    namespace: dendrite
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: 'https://github.com/Simon-Boyer/arctiq-mission-infra'
+    path: apps/dendrite/modules/federation
+  syncPolicy:
+    automated:
+      selfHeal: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: dendrite-key
+spec:
+  project: default
+  destination:
+    namespace: dendrite
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: 'https://github.com/Simon-Boyer/arctiq-mission-infra'
+    path: apps/dendrite/modules/key
+  syncPolicy:
+    automated:
+      selfHeal: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: dendrite-media
+spec:
+  project: default
+  destination:
+    namespace: dendrite
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: 'https://github.com/Simon-Boyer/arctiq-mission-infra'
+    path: apps/dendrite/modules/media
+  syncPolicy:
+    automated:
+      selfHeal: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: dendrite-roomserver
+spec:
+  project: default
+  destination:
+    namespace: dendrite
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: 'https://github.com/Simon-Boyer/arctiq-mission-infra'
+    path: apps/dendrite/modules/roomserver
+  syncPolicy:
+    automated:
+      selfHeal: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: dendrite-sync
+spec:
+  project: default
+  destination:
+    namespace: dendrite
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: 'https://github.com/Simon-Boyer/arctiq-mission-infra'
+    path: apps/dendrite/modules/sync
+  syncPolicy:
+    automated:
+      selfHeal: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: dendrite-user
+spec:
+  project: default
+  destination:
+    namespace: dendrite
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: 'https://github.com/Simon-Boyer/arctiq-mission-infra'
+    path: apps/dendrite/modules/user
+  syncPolicy:
+    automated:
+      selfHeal: true

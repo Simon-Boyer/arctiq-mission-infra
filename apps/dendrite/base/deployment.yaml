@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dendrite-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dendrite
+  template:
+    metadata:
+      labels:
+        app: dendrite
+    spec:
+      containers:
+      - name: dendrite
+        image: dendrite:latest
+        resources:
+          limits:
+            memory: "250Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8008
+          name: http
+        volumeMounts:
+          - mountPath: /data/configs/
+            name: dendrite-cm
+          - mountPath: /data/keys
+            name: matrix-key
+        args: ["-config", "/data/configs/dendrite.yaml"]
+        env:
+          - name: CONNECTION_USERNAME
+            valueFrom:
+              secretKeyRef:
+                  name: dendrite-db-user
+                  key: username
+          - name: CONNECTION_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                  name: dendrite-db-user
+                  key: password
+          - name: CONNECTION_ENDPOINT
+            valueFrom:
+              secretKeyRef:
+                  name: dendrite-db-secret
+                  key: publicIP
+          - name: CONNECTION_STRING
+            #value: "postgresql://sslmode=disable dbname=dendrite user=$(CONNECTION_USERNAME) password=\"$(CONNECTION_PASSWORD)\" hostaddr=$(CONNECTION_ENDPOINT)"
+            value: "postgresql://$(CONNECTION_USERNAME):$(CONNECTION_PASSWORD)@$(CONNECTION_ENDPOINT):5432/dendrite?sslmode=disable"
+      volumes:
+        - name: dendrite-cm
+          configMap:
+            name: dendrite-cm
+        - name: matrix-key
+          secret:
+            secretName: dendrite-pem-secret
+            optional: false

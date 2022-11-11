@@ -1,0 +1,43 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: dendrite
+
+resources:
+  - namespace.yaml
+  - postgresql.yaml
+  - dendrite-db-user.yaml
+
+helmCharts:
+- name: nats
+  includeCRDs: true
+  namespace: dendrite
+  releaseName: nats
+  version: 0.18.2
+  repo: https://nats-io.github.io/k8s/helm/charts/
+  valuesInline:
+    cluster:
+      enabled: false
+      replicas: 1
+    nats:
+      tls:
+        secret:
+          name: nats-client-tls
+        ca: "ca.crt"
+        cert: "tls.crt"
+        key: "tls.key"
+      jetstream:
+        enabled: true
+        memStorage:
+          enabled: true
+          size: 2Gi
+        fileStorage:
+          enabled: true
+          size: 1Gi
+          storageDirectory: /data/
+
+images:
+  - name: dendrite
+    newName: ghcr.io/simon-boyer/dendrite
+    digest: sha256:f0e83fa996a2df75ba0a84a6b5f7e1a518d06e40e5492b0610c476d10b215b4f

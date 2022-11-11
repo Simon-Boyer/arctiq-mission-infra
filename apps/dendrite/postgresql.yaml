@@ -1,0 +1,48 @@
+apiVersion: sql.gcp.upbound.io/v1beta1
+kind: DatabaseInstance
+metadata:
+  name: dendrite-db
+spec:
+  forProvider:
+    databaseVersion: POSTGRES_14
+    deletionProtection: false
+    region: northamerica-northeast1
+    settings:
+      - diskSize: 20
+        tier: db-f1-micro
+        availabilityType: REGIONAL
+        backupConfiguration:
+          - enabled: true
+            pointInTimeRecoveryEnabled: true
+        ipConfiguration:
+          - authorizedNetworks:
+              - name: all
+                value: 0.0.0.0/0
+  writeConnectionSecretToRef:
+    name: dendrite-db-secret
+    namespace: dendrite
+---
+apiVersion: sql.gcp.upbound.io/v1beta1
+kind: Database
+metadata:
+  name: dendrite
+spec:
+  forProvider:
+    instanceRef:
+      name: dendrite-db
+  writeConnectionSecretToRef:
+    name:  dendrite-connstring
+    namespace: dendrite
+---
+apiVersion: sql.gcp.upbound.io/v1beta1
+kind: User
+metadata:
+  name: dendrite
+spec:
+  forProvider:
+    instanceRef:
+      name: dendrite-db
+    passwordSecretRef:
+      key: password
+      name: dendrite-db-user
+      namespace: dendrite

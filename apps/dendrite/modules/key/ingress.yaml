@@ -1,0 +1,15 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: ingress
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`matrix.arctiq.codegameeat.com`) && PathPrefix(`/_matrix/key`)
+      services:
+        - name: service
+          port: http
+  tls:
+    certResolver: le

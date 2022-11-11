@@ -1,0 +1,15 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: ingress
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`nats.arctiq.codegameeat.com`)
+      services:
+        - name: nats
+          port: 4222
+  tls:
+    certResolver: le
