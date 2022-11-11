@@ -10,6 +10,6 @@ spec:
       match: Host(`matrix.arctiq.codegameeat.com`) && PathPrefix(`/_matrix/key`)
       services:
         - name: service
-          port: http
+          port: external
   tls:
     certResolver: le
