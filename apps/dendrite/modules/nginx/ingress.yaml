@@ -7,9 +7,9 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: Host(`matrix.arctiq.codegameeat.com`) && PathPrefix(`/_matrix/federation`)
+      match: Host(`matrix.arctiq.codegameeat.com`)
       services:
-        - name: service
-          port: external
+        - name: nginx
+          port: http
   tls:
     certResolver: le
