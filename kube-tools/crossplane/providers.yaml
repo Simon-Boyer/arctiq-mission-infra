@@ -2,6 +2,8 @@ apiVersion: gcp.crossplane.io/v1beta1
 kind: ProviderConfig
 metadata:
   name: gcp-provider
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
 spec:
   projectID: arctiq-mission-simonboyer
   credentials:

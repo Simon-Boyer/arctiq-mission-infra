@@ -2,6 +2,8 @@ apiVersion: pkg.crossplane.io/v1
 kind: Configuration
 metadata:
   name: xp-getting-started-with-gcp
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   ignoreCrossplaneConstraints: false
   package: registry.upbound.io/xp/getting-started-with-gcp:v1.10.1
