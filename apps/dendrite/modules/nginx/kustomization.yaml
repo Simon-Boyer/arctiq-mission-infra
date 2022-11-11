@@ -7,7 +7,7 @@ namespace: dendrite
 configMapGenerator:
   - name: nginx-conf
     files:
-      - ngix.conf
+      - nginx.conf
 
 resources:
   - deployment.yaml
