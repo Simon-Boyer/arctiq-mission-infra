@@ -1,13 +1,8 @@
 apiVersion: pkg.crossplane.io/v1
-kind: Configuration
+kind: Provider
 metadata:
-  name: xp-getting-started-with-gcp
+  name: provider-gcp
   annotations:
     argocd.argoproj.io/sync-wave: "1"
 spec:
-  ignoreCrossplaneConstraints: false
-  package: registry.upbound.io/xp/getting-started-with-gcp:v1.10.1
-  packagePullPolicy: IfNotPresent
-  revisionActivationPolicy: Automatic
-  revisionHistoryLimit: 0
-  skipDependencyResolution: false
+  package: xpkg.upbound.io/upbound/provider-gcp:v0.17.0
