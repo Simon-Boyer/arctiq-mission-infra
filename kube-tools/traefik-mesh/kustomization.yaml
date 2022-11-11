@@ -12,3 +12,5 @@ helmCharts:
   releaseName: traefik-mesh
   version: 4.1.0
   repo: https://helm.traefik.io/mesh
+  valuesInline:
+    kubedns: true
