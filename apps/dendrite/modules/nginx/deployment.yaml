@@ -30,5 +30,5 @@ spec:
         configMap:
           name: nginx-conf
           items:
-            - key: nginx.conf
-              path: nginx.conf
+            - key: virtualhost.conf
+              path: virtualhost/virtualhost.conf
