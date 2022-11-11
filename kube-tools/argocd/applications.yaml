@@ -35,10 +35,10 @@ spec:
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
-annotations:
-    argocd.argoproj.io/sync-wave: "1"
 metadata:
   name: crossplane-defs
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   project: default
   destination:
