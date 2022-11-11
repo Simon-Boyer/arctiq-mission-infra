@@ -18,7 +18,7 @@ spec:
         resources:
           limits:
             memory: "250Mi"
-            cpu: "500m"
+            cpu: "100m"
         ports:
         - containerPort: 8008
           name: http
