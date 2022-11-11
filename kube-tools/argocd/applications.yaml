@@ -5,7 +5,6 @@ metadata:
 spec:
   project: default
   destination:
-    namespace: traefik
     server: https://kubernetes.default.svc
   source:
     repoURL: 'https://github.com/Simon-Boyer/arctiq-mission-infra'
@@ -68,4 +67,21 @@ spec:
   syncPolicy:
     automated:
       selfHeal: true
-      
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: secret-generator-helm
+spec:
+  project: default
+  destination:
+    server: https://kubernetes.default.svc
+  source:
+    chart: kubernetes-secret-generator
+    repoURL: https://helm.mittwald.de
+    targetRevision: 3.4.0
+    helm:
+      releaseName: kubernetes-secret-generator
+  syncPolicy:
+    automated:
+      selfHeal: true
