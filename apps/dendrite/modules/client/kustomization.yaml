@@ -7,8 +7,8 @@ namePrefix: client-
 bases:
   - ../../base
 
-resources:
-  - ingress.yaml
+commonLabels:
+  app: client-dendrite
 
 patches:
 - patch: |-

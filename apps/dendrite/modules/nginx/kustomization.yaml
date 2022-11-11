@@ -9,6 +9,9 @@ configMapGenerator:
     files:
       - nginx.conf
 
+commonLabels:
+  app: nginx-dendrite
+
 resources:
   - deployment.yaml
   - service.yaml

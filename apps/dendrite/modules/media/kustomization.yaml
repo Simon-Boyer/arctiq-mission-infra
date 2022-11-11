@@ -7,8 +7,8 @@ namePrefix: media-
 bases:
   - ../../base
 
-resources:
-  - ingress.yaml
+commonLabels:
+  app: media-dendrite
 
 patches:
 - patch: |-

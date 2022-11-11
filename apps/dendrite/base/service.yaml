@@ -1,9 +1,8 @@
-kind: Service
 apiVersion: v1
+kind: Service
 metadata:
   name: service
 spec:
-  type:  NodePort
   ports:
   - name:  internal
     port:  7770
