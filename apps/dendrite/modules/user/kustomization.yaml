@@ -10,9 +10,6 @@ bases:
 commonLabels:
   app: user-dendrite
 
-resources:
-  - ingress.yaml
-
 patches:
 - patch: |-
       - op: add
