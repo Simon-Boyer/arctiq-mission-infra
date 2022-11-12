@@ -16,8 +16,11 @@ spec:
       - name: dendrite
         image: dendrite:latest
         resources:
+          request:
+            memory: "150Mi"
+            cpu: "20m"
           limits:
-            memory: "250Mi"
+            memory: "500Mi"
             cpu: "100m"
         ports:
         - containerPort: 8070

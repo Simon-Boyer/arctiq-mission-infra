@@ -26,6 +26,9 @@ spec:
       - name: cinny
         image: cinny:latest
         resources:
+          request:
+            memory: "150Mi"
+            cpu: "20m"
           limits:
             memory: "250Mi"
             cpu: "100m"
