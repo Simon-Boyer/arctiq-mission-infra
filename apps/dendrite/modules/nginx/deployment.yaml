@@ -15,10 +15,13 @@ spec:
       containers:
       - name: nginx
         image: nginx
+        requests:
+            memory: "100Mi"
+            cpu: "10m"
         resources:
           limits:
             memory: "250Mi"
-            cpu: "100m"
+            cpu: "50m"
         ports:
         - containerPort: 80
         volumeMounts:
