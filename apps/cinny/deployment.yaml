@@ -12,12 +12,13 @@ spec:
       labels:
         app: cinny
     spec:
-      # topologySpreadConstraints:
-      #   - maxSkew: 1
-      #     topologyKey: kubernetes.io/hostname
-      #     whenUnsatisfiable: ScheduleAnyway
-      #     matchLabel:
-      #       app: cinny
+      topologySpreadConstraints:
+        - maxSkew: 1
+          topologyKey: kubernetes.io/hostname
+          whenUnsatisfiable: ScheduleAnyway
+          labelSelector:
+            matchLabels:
+              app: cinny
       containers:
       - name: cinny
         image: cinny:latest
