@@ -1,0 +1,15 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: cinny-ingress
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`cinny.arctiq.codegameeat.com`)
+      services:
+        - name: cinny
+          port: http
+  tls:
+    certResolver: le

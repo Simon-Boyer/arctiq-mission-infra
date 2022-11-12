@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cinny-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: cinny
+  template:
+    metadata:
+      labels:
+        app: cinny
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - cinny
+            topologyKey: "kubernetes.io/hostname"
+      containers:
+      - name: cinny
+        image: cinny:latest
+        resources:
+          limits:
+            memory: "250Mi"
+            cpu: "300m"
+        ports:
+        - containerPort: 80
+          name: http

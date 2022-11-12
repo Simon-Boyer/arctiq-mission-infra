@@ -1,0 +1,16 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+commonLabels:
+  app: cinny
+
+resources:
+  - deployment.yaml
+  - service.yaml
+  - ingress.yaml
+
+images:
+- name: cinny
+  newName: ghcr.io/simon-boyer/cinny
+  digest: 754ab4a129fa06f0ab886c0cbf2e694ac63bd664b0e07613beb24cd959bac470
