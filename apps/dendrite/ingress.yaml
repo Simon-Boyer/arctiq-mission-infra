@@ -7,10 +7,10 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: Host(`nats.arctiq.codegameeat.com`)
+      match: Host(`matrix.arctiq.codegameeat.com`)
       services:
-        - name: nats
-          port: 4222
+        - name: nginx-service
+          port: http
     - kind: Rule
       match: Host(`matrix.arctiq.codegameeat.com`) && PathPrefix(`/_matrix/client/`)
       services:
