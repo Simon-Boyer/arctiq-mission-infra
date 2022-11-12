@@ -7,9 +7,9 @@ spec:
   destination:
     server: https://kubernetes.default.svc
   source:
-    repoURL: 'https://helm.traefik.io/mesh'
+    chart: traefik-mesh
+    repoURL: https://helm.traefik.io/mesh
     targetRevision: 4.1.0
-    path: kube-tools/traefik-mesh
     helm:
       releaseName: traefik-mesh 
       parameters:
@@ -73,6 +73,11 @@ spec:
   syncPolicy:
     automated:
       selfHeal: true
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name:  kubernetes-secret-generator
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
