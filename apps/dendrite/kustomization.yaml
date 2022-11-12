@@ -9,6 +9,7 @@ resources:
   - postgresql.yaml
   - dendrite-db-user.yaml
   - ingress.yaml
+  - modules.yaml
 
 helmCharts:
 - name: nats

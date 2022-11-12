@@ -93,3 +93,37 @@ spec:
   syncPolicy:
     automated:
       selfHeal: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cinny
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/Simon-Boyer/arctiq-mission-infra'
+    path: apps/cinny
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: cinny
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: dendrite
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/Simon-Boyer/arctiq-mission-infra'
+    path: apps/dendrite
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: dendrite
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
