@@ -79,11 +79,11 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: secret-generator-helm
-  namespace: default
 spec:
   project: default
   destination:
     server: https://kubernetes.default.svc
+    namespace: default
   source:
     chart: kubernetes-secret-generator
     repoURL: https://helm.mittwald.de
