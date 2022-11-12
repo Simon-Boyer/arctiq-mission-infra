@@ -17,6 +17,22 @@ resource "google_container_node_pool" "primary_preemptible_nodes" {
 
   node_config {
     preemptible  = true
-    machine_type = "e2-medium"
+    machine_type = "e2-highmem-2"
   }
+}
+
+resource "google_service_account" "crossplane_service_account" {
+  account_id   = "crossplane"
+  display_name = "GKE Service Account"
+}
+
+resource "google_project_iam_member" "project" {
+  project = "arctiq-mission-simonboyer"
+  role    = "roles/cloudsql.admin"
+  member  = format("serviceAccount:%s", google_service_account.crossplane_service_account.email)
+}
+
+resource "google_project_service" "project" {
+  project = "arctiq-mission-simonboyer"
+  service = "sqladmin.googleapis.com"
 }
