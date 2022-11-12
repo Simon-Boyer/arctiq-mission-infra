@@ -1,4 +1,3 @@
----
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
@@ -8,16 +7,15 @@ commonLabels:
   app: cinny
 
 configurations:
-  - https://argoproj.github.io/argo-rollouts/features/kustomize/rollout-transform.yaml
+- https://argoproj.github.io/argo-rollouts/features/kustomize/rollout-transform.yaml
 
 
 resources:
-  - namespace.yaml
-  - deployment.yaml
-  - service.yaml
-  - ingress.yaml
+- namespace.yaml
+- deployment.yaml
+- service.yaml
+- ingress.yaml
 
 images:
 - name: cinny
   newName: ghcr.io/simon-boyer/cinny
-  digest: sha256:754ab4a129fa06f0ab886c0cbf2e694ac63bd664b0e07613beb24cd959bac470
