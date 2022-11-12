@@ -9,7 +9,12 @@ spec:
     - kind: Rule
       match: Host(`cinny.arctiq.codegameeat.com`)
       services:
-        - name: cinny-service
+        - name: cinny-green-service
+          port: http
+    - kind: Rule
+      match: Host(`preview.cinny.arctiq.codegameeat.com`)
+      services:
+        - name: cinny-blue-service
           port: http
   tls:
     certResolver: le

@@ -7,6 +7,10 @@ namespace: cinny
 commonLabels:
   app: cinny
 
+configurations:
+  - https://argoproj.github.io/argo-rollouts/features/kustomize/rollout-transform.yaml
+
+
 resources:
   - namespace.yaml
   - deployment.yaml

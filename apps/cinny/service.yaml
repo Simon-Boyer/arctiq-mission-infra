@@ -1,7 +1,18 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: cinny-service
+  name: cinny-green-service
+spec:
+  type:  NodePort
+  ports:
+  - name:  http
+    port:  80
+    targetPort:  http
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: cinny-blue-service
 spec:
   type:  NodePort
   ports:

@@ -1,5 +1,5 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
 metadata:
   name: cinny-deployment
 spec:
@@ -31,3 +31,8 @@ spec:
         ports:
         - containerPort: 80
           name: http
+  strategy:
+    blueGreen: 
+      activeService: cinny-green-service
+      previewService: cinny-blue-service
+      autoPromotionEnabled: false
