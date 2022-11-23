@@ -13,6 +13,6 @@ configMapGenerator:
   name: dendrite-cm
 
 images:
-- digest: sha256:4ddb09f88762bb394e68e65ad4a6f08ca9d618b642030be38b778333fd1312d4
+- digest: sha256:47c9864f894a2cce5fe448e39a6deebbe0b2e60f5291007f2c6378dbc98db044
   name: dendrite
   newName: ghcr.io/simon-boyer/dendrite
