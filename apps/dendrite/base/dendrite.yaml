@@ -140,7 +140,7 @@ global:
 app_service_api:
   internal_api:
     listen: http://[::]:7770 # The listen address for incoming API requests
-    connect: http://app-service.dendrite.traefik.mesh:7770 # The connect address for other components to use
+    connect: http://app-service.dendrite.svc.cluster.local:7770 # The connect address for other components to use
 
   # Disable the validation of TLS certificates of appservices. This is
   # not recommended in production since it may allow appservice traffic
@@ -155,7 +155,7 @@ app_service_api:
 client_api:
   internal_api:
     listen: http://[::]:7770 # The listen address for incoming API requests
-    connect: http://client-service.dendrite.traefik.mesh:7770 # The connect address for other components to use
+    connect: http://client-service.dendrite.svc.cluster.local:7770 # The connect address for other components to use
   external_api:
     listen: http://[::]:8070
 
@@ -216,7 +216,7 @@ client_api:
 federation_api:
   internal_api:
     listen: http://[::]:7770 # The listen address for incoming API requests
-    connect: http://federation-service.dendrite.traefik.mesh:7770 # The connect address for other components to use
+    connect: http://federation-service.dendrite.svc.cluster.local:7770 # The connect address for other components to use
   external_api:
     listen: http://[::]:8070
   
@@ -262,7 +262,7 @@ federation_api:
 key_server:
   internal_api:
     listen: http://[::]:7770 # The listen address for incoming API requests
-    connect: http://key-service.dendrite.traefik.mesh:7770 # The connect address for other components to use
+    connect: http://key-service.dendrite.svc.cluster.local:7770 # The connect address for other components to use
 
   database:
     max_open_conns: 5
@@ -273,7 +273,7 @@ key_server:
 media_api:
   internal_api:
     listen: http://[::]:7770 # The listen address for incoming API requests
-    connect: http://media-service.dendrite.traefik.mesh:7770 # The connect address for other components to use
+    connect: http://media-service.dendrite.svc.cluster.local:7770 # The connect address for other components to use
   external_api:
     listen: http://[::]:8070
   
@@ -312,7 +312,7 @@ media_api:
 room_server:
   internal_api:
     listen: http://[::]:7770 # The listen address for incoming API requests
-    connect: http://roomserver-service.dendrite.traefik.mesh:7770 # The connect address for other components to use
+    connect: http://roomserver-service.dendrite.svc.cluster.local:7770 # The connect address for other components to use
 
   database:
     max_open_conns: 5
@@ -329,7 +329,7 @@ mscs:
 sync_api:
   internal_api:
     listen: http://[::]:7770 # The listen address for incoming API requests
-    connect: http://sync-service.dendrite.traefik.mesh:7770 # The connect address for other components to use
+    connect: http://sync-service.dendrite.svc.cluster.local:7770 # The connect address for other components to use
   external_api:
     listen: http://[::]:8070
 
@@ -360,7 +360,7 @@ sync_api:
 user_api:
   internal_api:
     listen: http://[::]:7770 # The listen address for incoming API requests
-    connect: http://user-service.dendrite.traefik.mesh:7770 # The connect address for other components to use
+    connect: http://user-service.dendrite.svc.cluster.local:7770 # The connect address for other components to use
 
   account_database:
     max_open_conns: 5
