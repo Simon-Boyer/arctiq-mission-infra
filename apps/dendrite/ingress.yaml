@@ -7,32 +7,32 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: Host(`matrix.arctiq.codegameeat.com`)
+      match: Host(`matrix.mission.arctiq.codegameeat.com`)
       services:
         - name: nginx-service
           port: http
     - kind: Rule
-      match: Host(`matrix.arctiq.codegameeat.com`) && PathPrefix(`/_matrix/client/`)
+      match: Host(`matrix.mission.arctiq.codegameeat.com`) && PathPrefix(`/_matrix/client/`)
       services:
         - name: client-service
           port: 8070
     - kind: Rule
-      match: Host(`matrix.arctiq.codegameeat.com`) && PathPrefix(`/_matrix/federation/`)
+      match: Host(`matrix.mission.arctiq.codegameeat.com`) && PathPrefix(`/_matrix/federation/`)
       services:
         - name: federation-service
           port: 8070
     - kind: Rule
-      match: Host(`matrix.arctiq.codegameeat.com`) && PathPrefix(`/_matrix/key/`)
+      match: Host(`matrix.mission.arctiq.codegameeat.com`) && PathPrefix(`/_matrix/key/`)
       services:
         - name: federation-service
           port: 8070
     - kind: Rule
-      match: Host(`matrix.arctiq.codegameeat.com`) && PathPrefix(`/_matrix/media/`)
+      match: Host(`matrix.mission.arctiq.codegameeat.com`) && PathPrefix(`/_matrix/media/`)
       services:
         - name: media-service
           port: 8070
     - kind: Rule
-      match: Host(`matrix.arctiq.codegameeat.com`) && Path(`/_matrix/client/{path:.*?/(sync|user/.*?/filter/?.*|keys/changes|rooms/.*?/(messages|.*?_?members|context/.*?|relations/.*?|event/.*?))}`)
+      match: Host(`matrix.mission.arctiq.codegameeat.com`) && Path(`/_matrix/client/{path:.*?/(sync|user/.*?/filter/?.*|keys/changes|rooms/.*?/(messages|.*?_?members|context/.*?|relations/.*?|event/.*?))}`)
       services:
         - name: sync-service
           port: 8070
