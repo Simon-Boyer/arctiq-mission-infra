@@ -1,19 +1,18 @@
----
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 namespace: dendrite
 
 resources:
-  - deployment.yaml
-  - service.yaml
+- deployment.yaml
+- service.yaml
 
 configMapGenerator:
-  - name: dendrite-cm
-    files:
-      - dendrite.yaml
+- files:
+  - dendrite.yaml
+  name: dendrite-cm
 
 images:
-  - name: dendrite
-    newName: ghcr.io/simon-boyer/dendrite
-    digest: sha256:ae761105a604727b5e81603d62cc92e708b4e4dcf1b6ae49b1778b6f685d4045
+- digest: sha256:47c9864f894a2cce5fe448e39a6deebbe0b2e60f5291007f2c6378dbc98db044
+  name: dendrite
+  newName: ghcr.io/simon-boyer/dendrite
