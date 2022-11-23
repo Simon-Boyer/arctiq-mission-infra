@@ -7,7 +7,7 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: Host(`cinny.mission.arctiq.codegameeat.commission.arctiq.codegameeat.com`)
+      match: Host(`cinny.mission.arctiq.codegameeat.com`)
       services:
         - name: cinny-green-service
           port: http
