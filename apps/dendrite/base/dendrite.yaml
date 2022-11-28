@@ -10,7 +10,7 @@ version: 2
 # Global Matrix configuration. This configuration applies to all components.
 global:
   # The domain name of this homeserver.
-  server_name: dendrite.mission.arctiq.codegameeat.com
+  server_name: dendrite.mission-arctiq.codegameeat.com
 
   # database:
   #   max_open_conns: 90
