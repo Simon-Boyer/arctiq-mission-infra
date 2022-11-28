@@ -17,6 +17,6 @@ resources:
 - ingress.yaml
 
 images:
-- digest: sha256:bc38bd967151fbfbbc821ed7f2b04f96eb8ec8afbe20ae14a6c9f4e74466b898
+- digest: sha256:7c043ad6e2feb1a410e5b718efdf3861ed90d082c8a4fd52f4713c8a4eaf7615
   name: cinny
   newName: ghcr.io/simon-boyer/cinny
